@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.predictItPaul</groupId>
+  <artifactId>PredictItPaul</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+  <description></description>
+  <inceptionYear>2020</inceptionYear>
+  <licenses>
+    <!--license>
+      <name>My License</name>
+      <url>http://....</url>
+      <distribution>repo</distribution>
+    </license-->
+  </licenses>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <encoding>UTF-8</encoding>
+    <scala.version>2.13.0</scala.version>
+    <scala.compat.version>2.13</scala.compat.version>
+
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
+
+    <dependency>
+       <groupId>commons-io</groupId>
+       <artifactId>commons-io</artifactId>
+       <version>2.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.tpolecat</groupId>
+      <artifactId>doobie-core_2.13</artifactId>
+      <version>0.8.8</version>
+    </dependency>
+    
+
+     <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.10.6</version>
+     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
+<!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor-typed -->
+<dependency>
+    <groupId>com.typesafe.akka</groupId>
+    <artifactId>akka-actor-typed_2.13</artifactId>
+    <version>2.6.8</version>
+</dependency>
+
+
+
+
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <testSourceDirectory>src/test/scala</testSourceDirectory>
+    <plugins>
+	<plugin>
+	<groupId>org.scala-tools</groupId>
+	<artifactId>maven-scala-plugin</artifactId>
+	<version>2.15.0</version>
+	<executions>
+	<execution>
+	<goals>
+	<goal>compile</goal>
+	<goal>testCompile</goal>
+	</goals>
+<configuration>
+</configuration>
+</execution>
+</executions>
+<configuration>
+<launchers>
+<launcher>
+<id>sample</id>
+<mainClass>com.predictItPaul.App</mainClass>
+</launcher>
+</launchers>
+</configuration>
+
+</plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.11.0</version>
+        <configuration>
+          <!-- Tests will be run with scalatest-maven-plugin instead -->
+          <skipTests>true</skipTests>
+        </configuration>
+      </plugin>
+
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-enforcer-plugin</artifactId>
+      <version>1.4</version>
+      <executions>
+        <execution>
+          <id>enforce-java</id>
+          <goals>
+            <goal>enforce</goal>
+          </goals>
+          <configuration>
+            <rules>
+              <requireJavaVersion>
+                <version>[1.8,)</version>
+              </requireJavaVersion>
+            </rules>    
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+
+
+
+   </plugins>
+  </build>
+</project>

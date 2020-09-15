@@ -1,0 +1,23 @@
+
+
+worker:
+  build: .
+  links:
+    - db
+  volumes:
+    - "./dir:/usr/src/app/PredictItPaul/"  
+  env_file:
+    postgres.env
+ 
+  stdin_open: true
+  tty: true
+  entrypoint: /bin/sh
+
+db:
+   image: postgres:12-alpine
+   volumes:
+      - ./db:/data/db
+   env_file:
+      postgres.env
+   ports:
+      - 5432:5432
